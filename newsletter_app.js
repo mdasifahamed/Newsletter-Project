@@ -42,11 +42,18 @@ const options = {
 const request = https.request(url,options, function(response){
   response.on("data",function(data){
     console.log(JSON.parse(data));
+    console.log(response.statusCode)
+    if(response.statusCode === 200){
+      res.send("Sign Up Successfully");
+    }else{
+        res.send("Invalid Signup");
+    }
   })
 
 })
 request.write(json_data);
 request.end();
+console.log(request.statusCode);
 })
 
 
