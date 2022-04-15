@@ -44,9 +44,9 @@ const request = https.request(url,options, function(response){
     console.log(JSON.parse(data));
     console.log(response.statusCode)
     if(response.statusCode === 200){
-      res.send("Sign Up Successfully");
+      res.sendFile(__dirname + '/success.html');
     }else{
-        res.send("Invalid Signup");
+        res.sendFile(__dirname + '/failure.html');
     }
   })
 
@@ -57,7 +57,13 @@ console.log(request.statusCode);
 })
 
 
+app.post('/success', function(req,res1){
+  res1.redirect('/');
+});
 
+app.post('/failure', function(req,res2){
+  res2.redirect('/');
+});
 
 app.listen(port,function(){
   console.log("Server Is Running");
