@@ -3,7 +3,8 @@ const bodyParser = require('body-parser'); // the body-parser libray to get data
 const requst = require('request');
 const https = require('https')
 const app = express(); // iniatilising the application
-var port = 3000; // initialising the prt  3000 is the local port mean this computer is ther server
+// var port = 3000; // initialising the prt  3000 is the local port mean this computer is ther server
+const port2 = process.env.PORT; // For ther dymnamic port selections and it will be used over the internet.
 app.use(express.static("public"));// static is an express method used to declareing the that contains
                                   // static files like css images etc to render it with th express
 
@@ -65,7 +66,7 @@ app.post('/failure', function(req,res2){
   res2.redirect('/');
 });
 
-app.listen(port,function(){
+app.listen(port2,function(){
   console.log("Server Is Running");
 })
 
